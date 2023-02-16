@@ -9,7 +9,7 @@ using Twilio.Types;
 namespace ChatCommerce.Controllers
 {
     [ApiController]
-    [Route("api/[controller]")]
+    [Route("My/[controller]")]
     public class WhatsAppIntegrationController : Controller
     {
         private readonly TwilioConfig _config;
