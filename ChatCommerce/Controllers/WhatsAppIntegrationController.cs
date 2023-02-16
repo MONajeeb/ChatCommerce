@@ -9,7 +9,7 @@ using Twilio.Types;
 namespace ChatCommerce.Controllers
 {
     [ApiController]
-    [Route("api/[controller]")]
+    [Route("My/")]
     public class WhatsAppIntegrationController : Controller
     {
         private readonly TwilioConfig _config;
@@ -18,7 +18,7 @@ namespace ChatCommerce.Controllers
             _config = config.Value;
         }
 
-        [HttpPost]
+        [HttpPost("SendWhatsAppMessage")]
         public async Task<IActionResult> SendMessage(string phoneNumber, string productName)
         {
             try
