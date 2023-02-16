@@ -28,7 +28,7 @@ namespace ChatCommerce.Controllers
                 var to = new PhoneNumber("whatsapp:" + phoneNumber);
                 var from = new PhoneNumber(_config.FromNumber);
 
-                var message = $"Thank you for choosing {productName}! We have received your order and will be in touch shortly to confirm the details.";
+                var message = $"Thank you for choosing {productName}! We have received your order and will be in touch shortly to confirm the details, DSQ!";
 
                 var messageOptions = new CreateMessageOptions(to)
                 {
