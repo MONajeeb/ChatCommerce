@@ -32,7 +32,7 @@ namespace ChatCommerce.Controllers
 
                 TwilioClient.Init(_config.AccountSid, _config.AuthToken);
 
-                var to = new PhoneNumber("whatsapp:" + phoneNumber);
+                var to = new PhoneNumber("whatsapp:+2" + phoneNumber);
                 var from = new PhoneNumber(_config.FromNumber);
 
                 var message = $"Thank you for choosing {productName}! We have received your order and will be in touch shortly to confirm the details, DSQ! Check our catalogue https://wa.me/c/201093524138";
