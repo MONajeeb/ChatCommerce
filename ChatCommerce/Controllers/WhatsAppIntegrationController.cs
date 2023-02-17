@@ -19,16 +19,23 @@ namespace ChatCommerce.Controllers
         }
 
         [HttpPost("SendWhatsAppMessage")]
-        public async Task<IActionResult> SendMessage(string phoneNumber, string productName)
+        public async Task<IActionResult> SendMessage(string phoneNumber, string productName , bool userPhone = false)
         {
             try
             {
+                if (userPhone)
+                {
+                    // Retrieve the phone number from the HTTP request headers
+                    var phoneHeader = Request.Headers["X-MSISDN"].FirstOrDefault();
+                    phoneNumber = phoneHeader?.Replace("tel:", "");
+                }
+
                 TwilioClient.Init(_config.AccountSid, _config.AuthToken);
 
                 var to = new PhoneNumber("whatsapp:" + phoneNumber);
                 var from = new PhoneNumber(_config.FromNumber);
 
-                var message = $"Thank you for choosing {productName}! We have received your order and will be in touch shortly to confirm the details, DSQ!";
+                var message = $"Thank you for choosing {productName}! We have received your order and will be in touch shortly to confirm the details, DSQ! Check our catalogue https://wa.me/c/201093524138";
 
                 var messageOptions = new CreateMessageOptions(to)
                 {
